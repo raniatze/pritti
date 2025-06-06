@@ -253,31 +253,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            We present the first method capable of photorealistically reconstructing a non-rigidly
-            deforming scene using photos/videos captured casually from mobile phones.
-          </p>
-          <p>
-            Our approach augments neural radiance fields
-            (NeRF) by optimizing an
-            additional continuous volumetric deformation field that warps each observed point into a
-            canonical 5D NeRF.
-            We observe that these NeRF-like deformation fields are prone to local minima, and
-            propose a coarse-to-fine optimization method for coordinate-based models that allows for
-            more robust optimization.
-            By adapting principles from geometry processing and physical simulation to NeRF-like
-            models, we propose an elastic regularization of the deformation field that further
-            improves robustness.
-          </p>
-          <p>
-            We show that <span class="dnerf">Nerfies</span> can turn casually captured selfie
-            photos/videos into deformable NeRF
-            models that allow for photorealistic renderings of the subject from arbitrary
-            viewpoints, which we dub <i>"nerfies"</i>. We evaluate our method by collecting data
-            using a
-            rig with two mobile phones that take time-synchronized photos, yielding train/validation
-            images of the same pose at different viewpoints. We show that our method faithfully
-            reconstructs non-rigidly deforming scenes and reproduces unseen views with high
-            fidelity.
+            Large-scale 3D semantic scene generation has predominantly relied on voxel-based representations, which are memory-intensive, bound by fixed resolutions, and challenging to edit. In 	  contrast, primitives represent semantic entities using compact, coarse 3D structures that are easy to manipulate and compose, making them an ideal representation for this task. In this paper, we introduce PrITTI, a latent diffusion-based framework that leverages primitives as the main foundational elements for generating compositional, controllable, and editable 3D semantic scene layouts. Our method adopts a hybrid representation, modeling ground surfaces in a rasterized format while encoding objects as vectorized 3D primitives. This decomposition is also reflected in a structured latent representation that enables flexible scene manipulation of ground and object components. To overcome the orientation ambiguities in conventional encoding methods, we introduce a stable Cholesky-based parameterization that jointly encodes object size and orientation. Experiments on the KITTI-360 dataset show that PrITTI outperforms a voxel-based baseline in generation quality, while reducing memory requirements by up to $ 3\times $. In addition, PrITTI enables direct instance-level manipulation of objects in the scene and supports a range of downstream applications, including scene inpainting, outpainting, and photo-realistic street-view synthesis.
           </p>
         </div>
       </div>
