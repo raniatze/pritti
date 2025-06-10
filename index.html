@@ -233,54 +233,61 @@
 <section class="section" id="open3d">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Interactive Open3D Visualizations</h2>
+
+    <!-- Label stays above -->
     <div class="has-text-centered mb-5">
-      <input id="veg-slider" class="slider is-fullwidth is-info" step="1" min="0" max="2" value="0" type="range" style="max-width: 300px;">
       <p id="veg-label" class="mt-2"><strong>Vegetation: Low</strong></p>
     </div>
 
+    <!-- Model sets -->
     <div id="veg-low" class="columns is-centered model-row">
       <div class="column is-one-third has-text-centered">
-        <model-viewer src="./static/models/generated_low_0.glb" auto-rotate camera-controls style="width: 100%; height: 300px;"></model-viewer>
+        <model-viewer src="./static/models/low_12.glb" auto-rotate camera-controls style="width: 100%; height: 300px;"></model-viewer>
         <p class="subtitle is-6">Low 1</p>
       </div>
       <div class="column is-one-third has-text-centered">
-        <model-viewer src="./static/models/generated_low_1.glb" auto-rotate camera-controls style="width: 100%; height: 300px;"></model-viewer>
+        <model-viewer src="./static/models/low_113.glb" auto-rotate camera-controls style="width: 100%; height: 300px;"></model-viewer>
         <p class="subtitle is-6">Low 2</p>
       </div>
       <div class="column is-one-third has-text-centered">
-        <model-viewer src="./static/models/generated_low_2.glb" auto-rotate camera-controls style="width: 100%; height: 300px;"></model-viewer>
+        <model-viewer src="./static/models/generated_low_0.glb" auto-rotate camera-controls style="width: 100%; height: 300px;"></model-viewer>
         <p class="subtitle is-6">Low 3</p>
       </div>
     </div>
 
     <div id="veg-medium" class="columns is-centered model-row" style="display: none;">
       <div class="column is-one-third has-text-centered">
-        <model-viewer src="./static/models/generated_low_0.glb" auto-rotate camera-controls style="width: 100%; height: 300px;"></model-viewer>
+        <model-viewer src="./static/models/medium_292.glb" auto-rotate camera-controls style="width: 100%; height: 300px;"></model-viewer>
         <p class="subtitle is-6">Medium 1</p>
       </div>
       <div class="column is-one-third has-text-centered">
-        <model-viewer src="./static/models/generated_low_1.glb" auto-rotate camera-controls style="width: 100%; height: 300px;"></model-viewer>
+        <model-viewer src="./static/models/generated_low_0.glb" auto-rotate camera-controls style="width: 100%; height: 300px;"></model-viewer>
         <p class="subtitle is-6">Medium 2</p>
       </div>
       <div class="column is-one-third has-text-centered">
-        <model-viewer src="./static/models/generated_low_2.glb" auto-rotate camera-controls style="width: 100%; height: 300px;"></model-viewer>
+        <model-viewer src="./static/models/generated_low_0.glb" auto-rotate camera-controls style="width: 100%; height: 300px;"></model-viewer>
         <p class="subtitle is-6">Medium 3</p>
       </div>
     </div>
 
     <div id="veg-high" class="columns is-centered model-row" style="display: none;">
       <div class="column is-one-third has-text-centered">
-        <model-viewer src="./static/models/generated_low_0.glb" auto-rotate camera-controls style="width: 100%; height: 300px;"></model-viewer>
+        <model-viewer src="./static/models/high_491.glb" auto-rotate camera-controls style="width: 100%; height: 300px;"></model-viewer>
         <p class="subtitle is-6">High 1</p>
       </div>
       <div class="column is-one-third has-text-centered">
-        <model-viewer src="./static/models/generated_low_1.glb" auto-rotate camera-controls style="width: 100%; height: 300px;"></model-viewer>
+        <model-viewer src="./static/models/high_562.glb" auto-rotate camera-controls style="width: 100%; height: 300px;"></model-viewer>
         <p class="subtitle is-6">High 2</p>
       </div>
       <div class="column is-one-third has-text-centered">
-        <model-viewer src="./static/models/generated_low_2.glb" auto-rotate camera-controls style="width: 100%; height: 300px;"></model-viewer>
+        <model-viewer src="./static/models/generated_low_0.glb" auto-rotate camera-controls style="width: 100%; height: 300px;"></model-viewer>
         <p class="subtitle is-6">High 3</p>
       </div>
+    </div>
+
+    <!-- Now the slider is centered below -->
+    <div class="has-text-centered mt-5">
+      <input id="veg-slider" class="slider is-fullwidth is-info" step="1" min="0" max="2" value="0" type="range" style="max-width: 300px;">
     </div>
   </div>
 </section>
