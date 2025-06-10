@@ -321,11 +321,19 @@
       </div>
     </div>
 
-
-    <!-- Now the slider is centered below -->
+    <!-- Slider with label -->
     <div class="columns is-centered mt-5">
-      <div class="column is-8 has-text-centered">
-        <input id="veg-slider" class="slider is-fullwidth is-info" step="1" min="0" max="2" value="0" type="range">
+      <div class="column is-8">
+        <div class="level is-mobile">
+          <div class="level-left">
+            <div class="level-item">
+              <label for="veg-slider" class="has-text-weight-semibold">Vegetation Density:</label>
+            </div>
+          </div>
+          <div class="level-right" style="flex-grow: 1;">
+            <input id="veg-slider" class="slider is-fullwidth is-info" step="1" min="0" max="2" value="0" type="range">
+          </div>
+        </div>
       </div>
     </div>
   </div>
