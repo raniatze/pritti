@@ -180,13 +180,12 @@
   </div>
 </section>
 
-<!-- Open3D GLB Model Viewer Section -->
+<!--
 <section class="section" id="open3d">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Interactive Open3D Visualizations</h2>
     <div class="columns is-centered">
 
-      <!-- Model 1 -->
       <div class="column is-one-third has-text-centered">
         <model-viewer
           src="./static/models/generated_low_0.glb"
@@ -200,7 +199,6 @@
         <p class="subtitle is-6">Model 1</p>
       </div>
 
-      <!-- Model 2 -->
       <div class="column is-one-third has-text-centered">
         <model-viewer
           src="./static/models/generated_low_1.glb"
@@ -214,7 +212,6 @@
         <p class="subtitle is-6">Model 2</p>
       </div>
 
-      <!-- Model 3 -->
       <div class="column is-one-third has-text-centered">
         <model-viewer
           src="./static/models/generated_low_2.glb"
@@ -231,7 +228,77 @@
     </div>
   </div>
 </section>
+-->
 
+<section class="section" id="open3d">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Interactive Open3D Visualizations</h2>
+    <div class="has-text-centered mb-5">
+      <input id="veg-slider" class="slider is-fullwidth is-info" step="1" min="0" max="2" value="0" type="range" style="max-width: 300px;">
+      <p id="veg-label" class="mt-2"><strong>Vegetation: Low</strong></p>
+    </div>
+
+    <div id="veg-low" class="columns is-centered model-row">
+      <div class="column is-one-third has-text-centered">
+        <model-viewer src="./static/models/generated_low_0.glb" auto-rotate camera-controls style="width: 100%; height: 300px;"></model-viewer>
+        <p class="subtitle is-6">Low 1</p>
+      </div>
+      <div class="column is-one-third has-text-centered">
+        <model-viewer src="./static/models/generated_low_1.glb" auto-rotate camera-controls style="width: 100%; height: 300px;"></model-viewer>
+        <p class="subtitle is-6">Low 2</p>
+      </div>
+      <div class="column is-one-third has-text-centered">
+        <model-viewer src="./static/models/generated_low_2.glb" auto-rotate camera-controls style="width: 100%; height: 300px;"></model-viewer>
+        <p class="subtitle is-6">Low 3</p>
+      </div>
+    </div>
+
+    <div id="veg-medium" class="columns is-centered model-row" style="display: none;">
+      <div class="column is-one-third has-text-centered">
+        <model-viewer src="./static/models/generated_low_0.glb" auto-rotate camera-controls style="width: 100%; height: 300px;"></model-viewer>
+        <p class="subtitle is-6">Medium 1</p>
+      </div>
+      <div class="column is-one-third has-text-centered">
+        <model-viewer src="./static/models/generated_low_1.glb" auto-rotate camera-controls style="width: 100%; height: 300px;"></model-viewer>
+        <p class="subtitle is-6">Medium 2</p>
+      </div>
+      <div class="column is-one-third has-text-centered">
+        <model-viewer src="./static/models/generated_low_2.glb" auto-rotate camera-controls style="width: 100%; height: 300px;"></model-viewer>
+        <p class="subtitle is-6">Medium 3</p>
+      </div>
+    </div>
+
+    <div id="veg-high" class="columns is-centered model-row" style="display: none;">
+      <div class="column is-one-third has-text-centered">
+        <model-viewer src="./static/models/generated_low_0.glb" auto-rotate camera-controls style="width: 100%; height: 300px;"></model-viewer>
+        <p class="subtitle is-6">High 1</p>
+      </div>
+      <div class="column is-one-third has-text-centered">
+        <model-viewer src="./static/models/generated_low_1.glb" auto-rotate camera-controls style="width: 100%; height: 300px;"></model-viewer>
+        <p class="subtitle is-6">High 2</p>
+      </div>
+      <div class="column is-one-third has-text-centered">
+        <model-viewer src="./static/models/generated_low_2.glb" auto-rotate camera-controls style="width: 100%; height: 300px;"></model-viewer>
+        <p class="subtitle is-6">High 3</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const slider = document.getElementById("veg-slider");
+  const label = document.getElementById("veg-label");
+  const sections = ["veg-low", "veg-medium", "veg-high"];
+  const labels = ["Low", "Medium", "High"];
+
+  slider.addEventListener("input", () => {
+    const value = parseInt(slider.value);
+    label.innerHTML = `<strong>Vegetation: ${labels[value]}</strong>`;
+    sections.forEach((id, idx) => {
+      document.getElementById(id).style.display = (value === idx) ? "flex" : "none";
+    });
+  });
+</script>
 
 <!--
 <section class="section">
