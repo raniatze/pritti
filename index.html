@@ -251,15 +251,21 @@
     <!-- Low Vegetation Carousel -->
     <div id="carousel-low" class="carousel results-carousel is-active">
       <div class="item has-text-centered">
-        <div class="iframe-placeholder" data-src="https://sketchfab.com/models/d58960474aed462a92060c759a37ac9b/embed?autospin=1&autostart=1&dnt=1" style="width:100%; height:300px;"></div>
+        <div class="iframe-placeholder"
+             data-src="https://sketchfab.com/models/d58960474aed462a92060c759a37ac9b/embed?autospin=1&autostart=1&dnt=1"
+             style="width:100%; height:300px;"></div>
         <p class="subtitle is-6 mt-2">Scene #1</p>
       </div>
       <div class="item has-text-centered">
-        <div class="iframe-placeholder" data-src="https://sketchfab.com/models/3910476e8b794a7184fa917f7a9c7cfe/embed?autospin=1&autostart=1&dnt=1" style="width:100%; height:300px;"></div>
+        <div class="iframe-placeholder"
+             data-src="https://sketchfab.com/models/3910476e8b794a7184fa917f7a9c7cfe/embed?autospin=1&autostart=1&dnt=1"
+             style="width:100%; height:300px;"></div>
         <p class="subtitle is-6 mt-2">Scene #2</p>
       </div>
       <div class="item has-text-centered">
-        <div class="iframe-placeholder" data-src="https://sketchfab.com/models/ee3c95417ec04b008ea2bc3bd5e15c1c/embed?autospin=1&autostart=1&dnt=1" style="width:100%; height:300px;"></div>
+        <div class="iframe-placeholder"
+             data-src="https://sketchfab.com/models/ee3c95417ec04b008ea2bc3bd5e15c1c/embed?autospin=1&autostart=1&dnt=1"
+             style="width:100%; height:300px;"></div>
         <p class="subtitle is-6 mt-2">Scene #3</p>
       </div>
     </div>
@@ -267,15 +273,21 @@
     <!-- Medium Vegetation Carousel -->
     <div id="carousel-medium" class="carousel results-carousel" style="display: none;">
       <div class="item has-text-centered">
-        <div class="iframe-placeholder" data-src="https://sketchfab.com/models/28d0b5399878461d82d1791eac7becbd/embed?autospin=1&autostart=1&dnt=1" style="width:100%; height:300px;"></div>
+        <div class="iframe-placeholder"
+             data-src="https://sketchfab.com/models/28d0b5399878461d82d1791eac7becbd/embed?autospin=1&autostart=1&dnt=1"
+             style="width:100%; height:300px;"></div>
         <p class="subtitle is-6 mt-2">Scene #1</p>
       </div>
       <div class="item has-text-centered">
-        <div class="iframe-placeholder" data-src="https://sketchfab.com/models/de2005cf230a4113bb7b5faf85048303/embed?autospin=1&autostart=1&dnt=1" style="width:100%; height:300px;"></div>
+        <div class="iframe-placeholder"
+             data-src="https://sketchfab.com/models/de2005cf230a4113bb7b5faf85048303/embed?autospin=1&autostart=1&dnt=1"
+             style="width:100%; height:300px;"></div>
         <p class="subtitle is-6 mt-2">Scene #2</p>
       </div>
       <div class="item has-text-centered">
-        <div class="iframe-placeholder" data-src="https://sketchfab.com/models/af073186480b41dd8c1e2ba9134ae5e6/embed?autospin=1&autostart=1&dnt=1" style="width:100%; height:300px;"></div>
+        <div class="iframe-placeholder"
+             data-src="https://sketchfab.com/models/af073186480b41dd8c1e2ba9134ae5e6/embed?autospin=1&autostart=1&dnt=1"
+             style="width:100%; height:300px;"></div>
         <p class="subtitle is-6 mt-2">Scene #3</p>
       </div>
     </div>
@@ -283,15 +295,21 @@
     <!-- High Vegetation Carousel -->
     <div id="carousel-high" class="carousel results-carousel" style="display: none;">
       <div class="item has-text-centered">
-        <div class="iframe-placeholder" data-src="https://sketchfab.com/models/b6cde11381b248f29e8f212ab6b8d05b/embed?autospin=1&autostart=1&dnt=1" style="width:100%; height:300px;"></div>
+        <div class="iframe-placeholder"
+             data-src="https://sketchfab.com/models/b6cde11381b248f29e8f212ab6b8d05b/embed?autospin=1&autostart=1&dnt=1"
+             style="width:100%; height:300px;"></div>
         <p class="subtitle is-6 mt-2">Scene #1</p>
       </div>
       <div class="item has-text-centered">
-        <div class="iframe-placeholder" data-src="https://sketchfab.com/models/1209b315de9e46f2af03d03a87fdd147/embed?autospin=1&autostart=1&dnt=1" style="width:100%; height:300px;"></div>
+        <div class="iframe-placeholder"
+             data-src="https://sketchfab.com/models/1209b315de9e46f2af03d03a87fdd147/embed?autospin=1&autostart=1&dnt=1"
+             style="width:100%; height:300px;"></div>
         <p class="subtitle is-6 mt-2">Scene #2</p>
       </div>
       <div class="item has-text-centered">
-        <div class="iframe-placeholder" data-src="https://sketchfab.com/models/28d0b5399878461d82d1791eac7becbd/embed?autospin=1&autostart=1&dnt=1" style="width:100%; height:300px;"></div>
+        <div class="iframe-placeholder"
+             data-src="https://sketchfab.com/models/28d0b5399878461d82d1791eac7becbd/embed?autospin=1&autostart=1&dnt=1"
+             style="width:100%; height:300px;"></div>
         <p class="subtitle is-6 mt-2">Scene #3</p>
       </div>
     </div>
@@ -320,15 +338,22 @@
   const carouselInstances = {};
 
   function initCarousel(id) {
+    const el = document.getElementById(id);
     if (!carouselInstances[id]) {
-      const instance = bulmaCarousel.attach(`#${id}`, {
+      carouselInstances[id] = bulmaCarousel.attach(`#${id}`, {
         slidesToScroll: 3,
         slidesToShow: 3,
         loop: true,
         navigation: true,
         autoplay: false
       });
-      carouselInstances[id] = instance;
+    } else {
+      // Refresh existing instance to ensure proper rendering
+      setTimeout(() => {
+        if (carouselInstances[id][0]) {
+          carouselInstances[id][0].refresh();
+        }
+      }, 50);
     }
   }
 
@@ -358,11 +383,6 @@
         el.classList.add("is-active");
         loadVisibleIframes(id);
         initCarousel(id);
-        setTimeout(() => {
-          if (carouselInstances[id]) {
-            carouselInstances[id][0].refresh(); // Ensure correct rendering
-          }
-        }, 50);
       } else {
         el.style.display = "none";
         el.classList.remove("is-active");
@@ -370,9 +390,9 @@
     });
   });
 
-  // Initialize first carousel on page load
   document.addEventListener("DOMContentLoaded", () => {
-    loadVisibleIframes("carousel-low");
+    // Preload all to avoid delay on switch
+    carousels.forEach(loadVisibleIframes);
     initCarousel("carousel-low");
   });
 </script>
