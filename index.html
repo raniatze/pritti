@@ -362,6 +362,25 @@
   const levels = ["Low", "Medium", "High"];
   const carousels = ["carousel-low", "carousel-medium", "carousel-high"];
 
+  // Keep references to active carousels
+  const carouselInstances = {};
+
+  function initCarousel(id) {
+    // Prevent duplicate attachment
+    if (!carouselInstances[id]) {
+      const el = document.getElementById(id);
+      const instance = bulmaCarousel.attach(`#${id}`, {
+        slidesToScroll: 3,
+        slidesToShow: 3,
+        loop: true,
+        navigation: true,
+        autoplay: false
+      });
+      carouselInstances[id] = instance;
+    }
+  }
+
+  // Slider interaction
   slider.addEventListener("input", () => {
     const value = parseInt(slider.value);
     label.innerHTML = `<strong>Vegetation: ${levels[value]}</strong>`;
@@ -370,6 +389,7 @@
       if (value === idx) {
         el.style.display = "block";
         el.classList.add("is-active");
+        initCarousel(id); // Init only after it's visible
       } else {
         el.style.display = "none";
         el.classList.remove("is-active");
@@ -377,15 +397,12 @@
     });
   });
 
-  // Initialize all carousels
-  bulmaCarousel.attach('.carousel', {
-    slidesToScroll: 3,
-    slidesToShow: 3,
-    loop: true,
-    navigation: true,
-    autoplay: false
+  // Init first one on load
+  document.addEventListener("DOMContentLoaded", () => {
+    initCarousel(carousels[0]);
   });
 </script>
+
 
 
 
