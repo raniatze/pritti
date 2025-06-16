@@ -32,6 +32,7 @@
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -39,6 +40,7 @@
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/js/bulma-carousel.min.js"></script>
 </head>
 <body>
 
@@ -230,91 +232,122 @@
 </section>
 -->
 
-<section class="section" id="sketchfab-scenes">
+<section class="section">
   <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Generated Scenes</h2>
-
-    <!-- Label stays above -->
-    <div class="has-text-centered mb-5">
-      <p id="sketchfab-label" class="mt-2"><strong>Vegetation: Low</strong></p>
+    <h2 class="title has-text-centered">Conditional Scene Synthesis</h2>
+    <div class="has-text-centered mb-4">
+      <p id="veg-label"><strong>Vegetation: Low</strong></p>
     </div>
 
-    <!-- Sketchfab Model Groups -->
-    <div id="sketchfab-low" class="model-row">
-      <!-- Row 1 -->
-      <div class="columns is-centered">
-        <div class="column is-one-third has-text-centered">
-          <iframe title="Scene 1" class="sketchfab-embed" frameborder="0" allowfullscreen
-            src="https://sketchfab.com/models/28d0b5399878461d82d1791eac7becbd/embed?autospin=1&autostart=1&dnt=1"
-            style="width: 100%; height: 300px;"></iframe>
-          <p class="subtitle is-6">#1</p>
-        </div>
-        <div class="column is-one-third has-text-centered">
-          <iframe title="Scene 1" class="sketchfab-embed" frameborder="0" allowfullscreen
-            src="https://sketchfab.com/models/28d0b5399878461d82d1791eac7becbd/embed?autospin=1&autostart=1&dnt=1"
-            style="width: 100%; height: 300px;"></iframe>
-          <p class="subtitle is-6">#2</p>
-        </div>
-        <div class="column is-one-third has-text-centered">
-          <iframe title="Scene 1" class="sketchfab-embed" frameborder="0" allowfullscreen
-            src="https://sketchfab.com/models/28d0b5399878461d82d1791eac7becbd/embed?autospin=1&autostart=1&dnt=1"
-            style="width: 100%; height: 300px;"></iframe>
-          <p class="subtitle is-6">#3</p>
-        </div>
-      </div>
-
-      <!-- Row 2 -->
-      <div class="columns is-centered">
-        <div class="column is-one-third has-text-centered">
-          <iframe title="Scene 1" class="sketchfab-embed" frameborder="0" allowfullscreen
-            src="https://sketchfab.com/models/28d0b5399878461d82d1791eac7becbd/embed?autospin=1&autostart=1&dnt=1"
-            style="width: 100%; height: 300px;"></iframe>
-          <p class="subtitle is-6">#4</p>
-        </div>
-        <div class="column is-one-third has-text-centered">
-          <iframe title="Scene 1" class="sketchfab-embed" frameborder="0" allowfullscreen
-            src="https://sketchfab.com/models/28d0b5399878461d82d1791eac7becbd/embed?autospin=1&autostart=1&dnt=1"
-            style="width: 100%; height: 300px;"></iframe>
-          <p class="subtitle is-6">#5</p>
-        </div>
-        <div class="column is-one-third has-text-centered">
-          <iframe title="Scene 1" class="sketchfab-embed" frameborder="0" allowfullscreen
-            src="https://sketchfab.com/models/28d0b5399878461d82d1791eac7becbd/embed?autospin=1&autostart=1&dnt=1"
-            style="width: 100%; height: 300px;"></iframe>
-          <p class="subtitle is-6">#6</p>
-        </div>
-      </div>
-    </div>
-
-    <div id="sketchfab-medium" class="columns is-multiline is-centered model-row" style="display: none;">
-      <div class="column is-one-third has-text-centered">
-        <iframe title="Scene 2" class="sketchfab-embed" frameborder="0" allowfullscreen
+    <!-- Carousels -->
+    <div id="carousel-low" class="carousel results-carousel is-active">
+      <div class="item has-text-centered">
+        <iframe title="Low 1" frameborder="0" allowfullscreen
           src="https://sketchfab.com/models/28d0b5399878461d82d1791eac7becbd/embed?autospin=1&autostart=1&dnt=1"
           style="width: 100%; height: 300px;"></iframe>
-        <p class="subtitle is-6">Medium 1</p>
+        <p class="subtitle is-6 mt-2">Low 1</p>
       </div>
-    </div>
-
-    <div id="sketchfab-high" class="columns is-multiline is-centered model-row" style="display: none;">
-      <div class="column is-one-third has-text-centered">
-        <iframe title="Scene 3" class="sketchfab-embed" frameborder="0" allowfullscreen
+      <div class="item has-text-centered">
+        <iframe title="Low 1" frameborder="0" allowfullscreen
           src="https://sketchfab.com/models/28d0b5399878461d82d1791eac7becbd/embed?autospin=1&autostart=1&dnt=1"
           style="width: 100%; height: 300px;"></iframe>
-        <p class="subtitle is-6">High 1</p>
+        <p class="subtitle is-6 mt-2">Low 2</p>
+      </div>
+      <div class="item has-text-centered">
+        <iframe title="Low 1" frameborder="0" allowfullscreen
+          src="https://sketchfab.com/models/28d0b5399878461d82d1791eac7becbd/embed?autospin=1&autostart=1&dnt=1"
+          style="width: 100%; height: 300px;"></iframe>
+        <p class="subtitle is-6 mt-2">Low 3</p>
+      </div>
+      <div class="item has-text-centered">
+        <iframe title="Low 1" frameborder="0" allowfullscreen
+          src="https://sketchfab.com/models/28d0b5399878461d82d1791eac7becbd/embed?autospin=1&autostart=1&dnt=1"
+          style="width: 100%; height: 300px;"></iframe>
+        <p class="subtitle is-6 mt-2">Low 4</p>
+      </div>
+      <div class="item has-text-centered">
+        <iframe title="Low 1" frameborder="0" allowfullscreen
+          src="https://sketchfab.com/models/28d0b5399878461d82d1791eac7becbd/embed?autospin=1&autostart=1&dnt=1"
+          style="width: 100%; height: 300px;"></iframe>
+        <p class="subtitle is-6 mt-2">Low 5</p>
+      </div>
+      <div class="item has-text-centered">
+        <iframe title="Low 1" frameborder="0" allowfullscreen
+          src="https://sketchfab.com/models/28d0b5399878461d82d1791eac7becbd/embed?autospin=1&autostart=1&dnt=1"
+          style="width: 100%; height: 300px;"></iframe>
+        <p class="subtitle is-6 mt-2">Low 6</p>
       </div>
     </div>
 
-    <!-- Slider with label -->
+    <div id="carousel-medium" class="carousel results-carousel" style="display: none;">
+      <div class="item has-text-centered">
+        <iframe title="Low 1" frameborder="0" allowfullscreen
+          src="https://sketchfab.com/models/28d0b5399878461d82d1791eac7becbd/embed?autospin=1&autostart=1&dnt=1"
+          style="width: 100%; height: 300px;"></iframe>
+        <p class="subtitle is-6 mt-2">Medium 1</p>
+      </div>
+      <div class="item has-text-centered">
+        <iframe title="Low 1" frameborder="0" allowfullscreen
+          src="https://sketchfab.com/models/28d0b5399878461d82d1791eac7becbd/embed?autospin=1&autostart=1&dnt=1"
+          style="width: 100%; height: 300px;"></iframe>
+        <p class="subtitle is-6 mt-2">Medium 2</p>
+      </div>
+      <div class="item has-text-centered">
+        <iframe title="Low 1" frameborder="0" allowfullscreen
+          src="https://sketchfab.com/models/28d0b5399878461d82d1791eac7becbd/embed?autospin=1&autostart=1&dnt=1"
+          style="width: 100%; height: 300px;"></iframe>
+        <p class="subtitle is-6 mt-2">Medium 3</p>
+      </div>
+      <div class="item has-text-centered">
+        <iframe title="Low 1" frameborder="0" allowfullscreen
+          src="https://sketchfab.com/models/28d0b5399878461d82d1791eac7becbd/embed?autospin=1&autostart=1&dnt=1"
+          style="width: 100%; height: 300px;"></iframe>
+        <p class="subtitle is-6 mt-2">Medium 4</p>
+      </div>
+      <div class="item has-text-centered">
+        <iframe title="Low 1" frameborder="0" allowfullscreen
+          src="https://sketchfab.com/models/28d0b5399878461d82d1791eac7becbd/embed?autospin=1&autostart=1&dnt=1"
+          style="width: 100%; height: 300px;"></iframe>
+        <p class="subtitle is-6 mt-2">Medium 5</p>
+      </div>
+      <div class="item has-text-centered">
+        <iframe title="Low 1" frameborder="0" allowfullscreen
+          src="https://sketchfab.com/models/28d0b5399878461d82d1791eac7becbd/embed?autospin=1&autostart=1&dnt=1"
+          style="width: 100%; height: 300px;"></iframe>
+        <p class="subtitle is-6 mt-2">Medium 6</p>
+      </div>
+    </div>
+
+    <div id="carousel-high" class="carousel results-carousel" style="display: none;">
+      <div class="item has-text-centered">
+        <iframe title="Low 1" frameborder="0" allowfullscreen
+          src="https://sketchfab.com/models/28d0b5399878461d82d1791eac7becbd/embed?autospin=1&autostart=1&dnt=1"
+          style="width: 100%; height: 300px;"></iframe>
+        <p class="subtitle is-6 mt-2">High 1</p>
+      </div>
+      <div class="item has-text-centered">
+        <iframe title="Low 1" frameborder="0" allowfullscreen
+          src="https://sketchfab.com/models/28d0b5399878461d82d1791eac7becbd/embed?autospin=1&autostart=1&dnt=1"
+          style="width: 100%; height: 300px;"></iframe>
+        <p class="subtitle is-6 mt-2">High 2</p>
+      </div>
+            <div class="item has-text-centered">
+        <iframe title="Low 1" frameborder="0" allowfullscreen
+          src="https://sketchfab.com/models/28d0b5399878461d82d1791eac7becbd/embed?autospin=1&autostart=1&dnt=1"
+          style="width: 100%; height: 300px;"></iframe>
+        <p class="subtitle is-6 mt-2">High 3</p>
+      </div>
+    </div>
+
+    <!-- Slider -->
     <div class="columns is-centered mt-5">
       <div class="column is-8">
         <div class="level is-mobile">
           <div class="level-left">
-            <div class="level-item">
-              <label for="sketchfab-slider" class="has-text-weight-semibold">Vegetation Density:</label>
-            </div>
+            <label for="veg-slider" class="level-item has-text-weight-semibold">Vegetation Density:</label>
           </div>
           <div class="level-right ml-4" style="flex-grow: 1;">
-            <input id="sketchfab-slider" class="slider is-fullwidth is-info" step="1" min="0" max="2" value="0" type="range">
+            <input id="veg-slider" class="slider is-fullwidth is-info" type="range" min="0" max="2" step="1" value="0">
           </div>
         </div>
       </div>
@@ -322,18 +355,35 @@
   </div>
 </section>
 
-<script>
-  const sketchfabSlider = document.getElementById("sketchfab-slider");
-  const sketchfabLabel = document.getElementById("sketchfab-label");
-  const sketchfabSections = ["sketchfab-low", "sketchfab-medium", "sketchfab-high"];
-  const sketchfabLabels = ["Low", "Medium", "High"];
 
-  sketchfabSlider.addEventListener("input", () => {
-    const value = parseInt(sketchfabSlider.value);
-    sketchfabLabel.innerHTML = `<strong>Vegetation: ${sketchfabLabels[value]}</strong>`;
-    sketchfabSections.forEach((id, idx) => {
-      document.getElementById(id).style.display = (value === idx) ? "flex" : "none";
+<script>
+  const label = document.getElementById("veg-label");
+  const slider = document.getElementById("veg-slider");
+  const levels = ["Low", "Medium", "High"];
+  const carousels = ["carousel-low", "carousel-medium", "carousel-high"];
+
+  slider.addEventListener("input", () => {
+    const value = parseInt(slider.value);
+    label.innerHTML = `<strong>Vegetation: ${levels[value]}</strong>`;
+    carousels.forEach((id, idx) => {
+      const el = document.getElementById(id);
+      if (value === idx) {
+        el.style.display = "block";
+        el.classList.add("is-active");
+      } else {
+        el.style.display = "none";
+        el.classList.remove("is-active");
+      }
     });
+  });
+
+  // Initialize all carousels
+  bulmaCarousel.attach('.carousel', {
+    slidesToScroll: 3,
+    slidesToShow: 3,
+    loop: true,
+    navigation: true,
+    autoplay: false
   });
 </script>
 
