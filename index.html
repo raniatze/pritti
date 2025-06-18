@@ -165,6 +165,37 @@
   </div>
 </section>
 
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Large-scale 3D semantic scene generation has predominantly relied on voxel-based representations, which are memory-intensive, bound by fixed resolutions, and challenging to edit. In 	  contrast, primitives represent semantic entities using compact, coarse 3D structures that are easy to manipulate and compose, making them an ideal representation for this task. In this paper, we introduce PrITTI, a latent diffusion-based framework that leverages primitives as the main foundational elements for generating compositional, controllable, and editable 3D semantic scene layouts. Our method adopts a hybrid representation, modeling ground surfaces in a rasterized format while encoding objects as vectorized 3D primitives. This decomposition is also reflected in a structured latent representation that enables flexible scene manipulation of ground and object components. To overcome the orientation ambiguities in conventional encoding methods, we introduce a stable Cholesky-based parameterization that jointly encodes object size and orientation. Experiments on the KITTI-360 dataset show that PrITTI outperforms a voxel-based baseline in generation quality, while reducing memory requirements by up to 3&times;. In addition, PrITTI enables direct instance-level manipulation of objects in the scene and supports a range of downstream applications, including scene inpainting, outpainting, and photo-realistic street-view synthesis.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!--
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    -->
+  </div>
+</section>
+
+
 <section class="section">
   <div class="container is-max-desktop">
     <h2 class="title has-text-centered">Conditional Scene Synthesis</h2>
@@ -266,34 +297,94 @@
   });
 </script>
 
-<section class="section">
+<!-- START OF NEW SECTION: Scene Inpainting -->
+<section class="section" id="scene-inpainting">
   <div class="container is-max-desktop">
-    <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            Large-scale 3D semantic scene generation has predominantly relied on voxel-based representations, which are memory-intensive, bound by fixed resolutions, and challenging to edit. In 	  contrast, primitives represent semantic entities using compact, coarse 3D structures that are easy to manipulate and compose, making them an ideal representation for this task. In this paper, we introduce PrITTI, a latent diffusion-based framework that leverages primitives as the main foundational elements for generating compositional, controllable, and editable 3D semantic scene layouts. Our method adopts a hybrid representation, modeling ground surfaces in a rasterized format while encoding objects as vectorized 3D primitives. This decomposition is also reflected in a structured latent representation that enables flexible scene manipulation of ground and object components. To overcome the orientation ambiguities in conventional encoding methods, we introduce a stable Cholesky-based parameterization that jointly encodes object size and orientation. Experiments on the KITTI-360 dataset show that PrITTI outperforms a voxel-based baseline in generation quality, while reducing memory requirements by up to 3&times;. In addition, PrITTI enables direct instance-level manipulation of objects in the scene and supports a range of downstream applications, including scene inpainting, outpainting, and photo-realistic street-view synthesis.
-          </p>
+    <div class="columns is-centered">
+      <div class="column is-one-third">
+        <h2 class="title is-4">Scene Inpainting</h2>
+        <p>
+          Our method enables inpainting of missing or occluded regions while preserving semantic and geometric consistency.
+        </p>
+      </div>
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column is-half has-text-centered">
+            <img src="./static/images/teaser.png" alt="Inpainting result" style="width: 100%; height: auto;">
+            <p class="subtitle is-6">Inpainting Result</p>
+          </div>
         </div>
       </div>
     </div>
-    <!--/ Abstract. -->
-
-    <!--
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Video</h2>
-        <div class="publication-video">
-          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
-                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-    -->
   </div>
 </section>
+
+<!-- START OF NEW SECTION: Scene Outpainting -->
+<section class="section" id="scene-outpainting">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-one-third">
+        <h2 class="title is-4">Scene Outpainting</h2>
+        <p>
+          We can expand incomplete scenes beyond their original boundaries while maintaining realistic structure and appearance.
+        </p>
+      </div>
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column is-half has-text-centered">
+            <img src="./static/images/teaser.png" alt="Outpainting result" style="width: 100%; height: auto;">
+            <p class="subtitle is-6">Outpainting Result</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- START OF NEW SECTION: Scene Editing -->
+<section class="section" id="scene-editing">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-one-third">
+        <h2 class="title is-4">Scene Editing</h2>
+        <p>
+          Our approach allows instance-level editing and manipulation of objects in the generated 3D scenes.
+        </p>
+      </div>
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column is-half has-text-centered">
+            <img src="./static/images/teaser.png" alt="Scene editing result" style="width: 100%; height: auto;">
+            <p class="subtitle is-6">Editing Result</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- START OF NEW SECTION: Street View Synthesis -->
+<section class="section" id="street-view-synthesis">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-one-third">
+        <h2 class="title is-4">Street View Synthesis</h2>
+        <p>
+          PrITTI can synthesize photo-realistic street views from the generated 3D scenes.
+        </p>
+      </div>
+      <div class="column">
+        <div class="columns is-centered">
+          <div class="column is-half has-text-centered">
+            <img src="./static/images/teaser.png" alt="Street view synthesis result" style="width: 100%; height: auto;">
+            <p class="subtitle is-6">Street View Result</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <!--
 <section class="section" id="open3d">
