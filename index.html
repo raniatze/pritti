@@ -196,196 +196,6 @@
 </section>
 
 
-<section class="section">
-  <div class="container is-max-desktop">
-    <h2 class="title has-text-centered">Conditional Scene Synthesis</h2>
-    <div class="has-text-centered mb-4">
-      <p id="veg-label"><strong>Low Vegetation</strong></p>
-    </div>
-
-    <!-- Low Vegetation -->
-    <div id="group-low" class="scene-group">
-      <div class="columns is-multiline is-centered">
-        <div class="column is-one-third has-text-centered">
-          <iframe loading="lazy" src="https://sketchfab.com/models/d58960474aed462a92060c759a37ac9b/embed?autospin=1&autostart=1&dnt=1"
-                  width="100%" height="300" frameborder="0" allowfullscreen></iframe>
-          <p class="subtitle is-6">Scene #1</p>
-        </div>
-        <div class="column is-one-third has-text-centered">
-          <iframe loading="lazy" src="https://sketchfab.com/models/3910476e8b794a7184fa917f7a9c7cfe/embed?autospin=1&autostart=1&dnt=1"
-                  width="100%" height="300" frameborder="0" allowfullscreen></iframe>
-          <p class="subtitle is-6">Scene #2</p>
-        </div>
-        <div class="column is-one-third has-text-centered">
-          <iframe loading="lazy" src="https://sketchfab.com/models/ee3c95417ec04b008ea2bc3bd5e15c1c/embed?autospin=1&autostart=1&dnt=1"
-                  width="100%" height="300" frameborder="0" allowfullscreen></iframe>
-          <p class="subtitle is-6">Scene #3</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Medium Vegetation -->
-    <div id="group-medium" class="scene-group" style="display: none;">
-      <div class="columns is-multiline is-centered">
-        <div class="column is-one-third has-text-centered">
-          <iframe loading="lazy" src="https://sketchfab.com/models/28d0b5399878461d82d1791eac7becbd/embed?autospin=1&autostart=1&dnt=1"
-                  width="100%" height="300" frameborder="0" allowfullscreen></iframe>
-          <p class="subtitle is-6">Scene #1</p>
-        </div>
-        <div class="column is-one-third has-text-centered">
-          <iframe loading="lazy" src="https://sketchfab.com/models/de2005cf230a4113bb7b5faf85048303/embed?autospin=1&autostart=1&dnt=1"
-                  width="100%" height="300" frameborder="0" allowfullscreen></iframe>
-          <p class="subtitle is-6">Scene #2</p>
-        </div>
-        <div class="column is-one-third has-text-centered">
-          <iframe loading="lazy" src="https://sketchfab.com/models/af073186480b41dd8c1e2ba9134ae5e6/embed?autospin=1&autostart=1&dnt=1"
-                  width="100%" height="300" frameborder="0" allowfullscreen></iframe>
-          <p class="subtitle is-6">Scene #3</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- High Vegetation -->
-    <div id="group-high" class="scene-group" style="display: none;">
-      <div class="columns is-multiline is-centered">
-        <div class="column is-one-third has-text-centered">
-          <iframe loading="lazy" src="https://sketchfab.com/models/b6cde11381b248f29e8f212ab6b8d05b/embed?autospin=1&autostart=1&dnt=1"
-                  width="100%" height="300" frameborder="0" allowfullscreen></iframe>
-          <p class="subtitle is-6">Scene #1</p>
-        </div>
-        <div class="column is-one-third has-text-centered">
-          <iframe loading="lazy" src="https://sketchfab.com/models/1209b315de9e46f2af03d03a87fdd147/embed?autospin=1&autostart=1&dnt=1"
-                  width="100%" height="300" frameborder="0" allowfullscreen></iframe>
-          <p class="subtitle is-6">Scene #2</p>
-        </div>
-        <div class="column is-one-third has-text-centered">
-          <iframe loading="lazy" src="https://sketchfab.com/models/28d0b5399878461d82d1791eac7becbd/embed?autospin=1&autostart=1&dnt=1"
-                  width="100%" height="300" frameborder="0" allowfullscreen></iframe>
-          <p class="subtitle is-6">Scene #3</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Slider -->
-    <div class="columns is-centered mt-5">
-      <div class="column is-8">
-        <div class="level is-mobile">
-          <div class="level-left">
-            <label for="veg-slider" class="level-item has-text-weight-semibold">Vegetation Density:</label>
-          </div>
-          <div class="level-right ml-4" style="flex-grow: 1;">
-            <input id="veg-slider" class="slider is-fullwidth is-info" type="range" min="0" max="2" step="1" value="0">
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<script>
-  const label = document.getElementById("veg-label");
-  const slider = document.getElementById("veg-slider");
-  const levels = ["Low", "Medium", "High"];
-  const groups = ["group-low", "group-medium", "group-high"];
-
-  slider.addEventListener("input", () => {
-    const value = parseInt(slider.value);
-    label.innerHTML = `<strong>${levels[value]} Vegetation</strong>`;
-    groups.forEach((id, idx) => {
-      document.getElementById(id).style.display = value === idx ? "block" : "none";
-    });
-  });
-</script>
-
-<!-- START OF NEW SECTION: Scene Inpainting -->
-<section class="section" id="scene-inpainting">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-one-third">
-        <h2 class="title is-4">Scene Inpainting</h2>
-        <p>
-          Our method enables inpainting of missing or occluded regions while preserving semantic and geometric consistency.
-        </p>
-      </div>
-      <div class="column">
-        <div class="columns is-centered">
-          <div class="column is-half has-text-centered">
-            <img src="./static/images/teaser.png" alt="Inpainting result" style="width: 100%; height: auto;">
-            <p class="subtitle is-6">Inpainting Result</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- START OF NEW SECTION: Scene Outpainting -->
-<section class="section" id="scene-outpainting">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-one-third">
-        <h2 class="title is-4">Scene Outpainting</h2>
-        <p>
-          We can expand incomplete scenes beyond their original boundaries while maintaining realistic structure and appearance.
-        </p>
-      </div>
-      <div class="column">
-        <div class="columns is-centered">
-          <div class="column is-half has-text-centered">
-            <img src="./static/images/teaser.png" alt="Outpainting result" style="width: 100%; height: auto;">
-            <p class="subtitle is-6">Outpainting Result</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- START OF NEW SECTION: Scene Editing -->
-<section class="section" id="scene-editing">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-one-third">
-        <h2 class="title is-4">Scene Editing</h2>
-        <p>
-          Our approach allows instance-level editing and manipulation of objects in the generated 3D scenes.
-        </p>
-      </div>
-      <div class="column">
-        <div class="columns is-centered">
-          <div class="column is-half has-text-centered">
-            <img src="./static/images/teaser.png" alt="Scene editing result" style="width: 100%; height: auto;">
-            <p class="subtitle is-6">Editing Result</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- START OF NEW SECTION: Street View Synthesis -->
-<section class="section" id="street-view-synthesis">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-one-third">
-        <h2 class="title is-4">Street View Synthesis</h2>
-        <p>
-          PrITTI can synthesize photo-realistic street views from the generated 3D scenes.
-        </p>
-      </div>
-      <div class="column">
-        <div class="columns is-centered">
-          <div class="column is-half has-text-centered">
-            <img src="./static/images/teaser.png" alt="Street view synthesis result" style="width: 100%; height: auto;">
-            <p class="subtitle is-6">Street View Result</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
 <!--
 <section class="section" id="open3d">
   <div class="container is-max-desktop">
@@ -693,174 +503,171 @@
 </section>
 -->
 <section class="section" id="results-gallery">
-  <div class="container is-max-desktop">
-    <h1 class="title is-2 has-text-centered">Results Gallery</h1>
+    <div class="container is-max-desktop">
 
-    <!-- Conditional Scene Synthesis -->
-    <h2 class="title is-3 mt-6">Conditional Scene Synthesis</h2>
-    <div class="content has-text-justified">
-      <p>
-        We generate controllable 3D semantic urban scenes under varying vegetation density conditions.
-        Users can adjust the density via the slider to explore variations in the synthesized scenes.
-      </p>
-    </div>
+        <h2 class="title is-2 has-text-centered">Results Gallery</h2>
 
-    <div class="has-text-centered mb-4">
-          <p id="veg-label"><strong>Low Vegetation</strong></p>
-    </div>
+        <!-- Conditional Scene Synthesis -->
+        <div class="columns is-centered">
+            <div class="column is-full-width">
+                <h3 class="title is-3">Conditional Scene Synthesis</h3>
+                <p>
+                    We generate controllable 3D semantic urban scenes under varying vegetation density conditions.
+                    Users can adjust the density via the slider to explore variations in the synthesized scenes.
+                </p>
 
-    <!-- Low Vegetation -->
-    <div id="group-low" class="scene-group">
-      <div class="columns is-multiline is-centered">
-        <div class="column is-one-third has-text-centered">
-          <iframe loading="lazy" src="https://sketchfab.com/models/d58960474aed462a92060c759a37ac9b/embed?autospin=1&autostart=1&dnt=1"
-                  width="100%" height="300" frameborder="0" allowfullscreen></iframe>
-          <p class="subtitle is-6">Scene #1</p>
+                <div class="has-text-centered mb-4">
+                    <p id="veg-label"><strong>Low Vegetation</strong></p>
+                </div>
+
+                <!-- Low Vegetation -->
+                <div id="group-low" class="columns is-multiline is-centered">
+                    <div class="column is-one-third has-text-centered">
+                        <iframe loading="lazy" src="https://sketchfab.com/models/d58960474aed462a92060c759a37ac9b/embed?autospin=1&autostart=1&dnt=1"
+                                width="100%" height="300" frameborder="0" allowfullscreen></iframe>
+                        <p class="subtitle is-6">Scene #1</p>
+                    </div>
+                    <div class="column is-one-third has-text-centered">
+                        <iframe loading="lazy" src="https://sketchfab.com/models/3910476e8b794a7184fa917f7a9c7cfe/embed?autospin=1&autostart=1&dnt=1"
+                                width="100%" height="300" frameborder="0" allowfullscreen></iframe>
+                        <p class="subtitle is-6">Scene #2</p>
+                    </div>
+                    <div class="column is-one-third has-text-centered">
+                        <iframe loading="lazy" src="https://sketchfab.com/models/ee3c95417ec04b008ea2bc3bd5e15c1c/embed?autospin=1&autostart=1&dnt=1"
+                                width="100%" height="300" frameborder="0" allowfullscreen></iframe>
+                        <p class="subtitle is-6">Scene #3</p>
+                    </div>
+                </div>
+
+                <!-- Medium Vegetation -->
+                <div id="group-medium" class="columns is-multiline is-centered" style="display: none;">
+                    <div class="column is-one-third has-text-centered">
+                        <iframe loading="lazy" src="https://sketchfab.com/models/28d0b5399878461d82d1791eac7becbd/embed?autospin=1&autostart=1&dnt=1"
+                                width="100%" height="300" frameborder="0" allowfullscreen></iframe>
+                        <p class="subtitle is-6">Scene #1</p>
+                    </div>
+                    <div class="column is-one-third has-text-centered">
+                        <iframe loading="lazy" src="https://sketchfab.com/models/de2005cf230a4113bb7b5faf85048303/embed?autospin=1&autostart=1&dnt=1"
+                                width="100%" height="300" frameborder="0" allowfullscreen></iframe>
+                        <p class="subtitle is-6">Scene #2</p>
+                    </div>
+                    <div class="column is-one-third has-text-centered">
+                        <iframe loading="lazy" src="https://sketchfab.com/models/af073186480b41dd8c1e2ba9134ae5e6/embed?autospin=1&autostart=1&dnt=1"
+                                width="100%" height="300" frameborder="0" allowfullscreen></iframe>
+                        <p class="subtitle is-6">Scene #3</p>
+                    </div>
+                </div>
+
+                <!-- High Vegetation -->
+                <div id="group-high" class="columns is-multiline is-centered" style="display: none;">
+                    <div class="column is-one-third has-text-centered">
+                        <iframe loading="lazy" src="https://sketchfab.com/models/b6cde11381b248f29e8f212ab6b8d05b/embed?autospin=1&autostart=1&dnt=1"
+                                width="100%" height="300" frameborder="0" allowfullscreen></iframe>
+                        <p class="subtitle is-6">Scene #1</p>
+                    </div>
+                    <div class="column is-one-third has-text-centered">
+                        <iframe loading="lazy" src="https://sketchfab.com/models/1209b315de9e46f2af03d03a87fdd147/embed?autospin=1&autostart=1&dnt=1"
+                                width="100%" height="300" frameborder="0" allowfullscreen></iframe>
+                        <p class="subtitle is-6">Scene #2</p>
+                    </div>
+                    <div class="column is-one-third has-text-centered">
+                        <iframe loading="lazy" src="https://sketchfab.com/models/28d0b5399878461d82d1791eac7becbd/embed?autospin=1&autostart=1&dnt=1"
+                                width="100%" height="300" frameborder="0" allowfullscreen></iframe>
+                        <p class="subtitle is-6">Scene #3</p>
+                    </div>
+                </div>
+
+                <!-- Slider -->
+                <div class="columns is-centered mt-5">
+                    <div class="column is-8">
+                        <div class="level is-mobile">
+                            <div class="level-left">
+                                <label for="veg-slider" class="level-item has-text-weight-semibold">Vegetation Density:</label>
+                            </div>
+                            <div class="level-right ml-4" style="flex-grow: 1;">
+                                <input id="veg-slider" class="slider is-fullwidth is-info" type="range" min="0" max="2" step="1" value="0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    const label = document.getElementById("veg-label");
+                    const slider = document.getElementById("veg-slider");
+                    const levels = ["Low", "Medium", "High"];
+                    const groups = ["group-low", "group-medium", "group-high"];
+
+                    slider.addEventListener("input", () => {
+                        const value = parseInt(slider.value);
+                        label.innerHTML = `<strong>${levels[value]} Vegetation</strong>`;
+                        groups.forEach((id, idx) => {
+                            document.getElementById(id).style.display = value === idx ? "flex" : "none";
+                        });
+                    });
+                </script>
+
+            </div> <!-- End column is-full-width -->
+        </div> <!-- End columns is-centered -->
+
+        <!-- Scene Inpainting -->
+        <div class="columns is-centered">
+            <div class="column is-full-width">
+                <h3 class="title is-4">Scene Inpainting</h3>
+                <p>
+                    Our method enables inpainting of missing or occluded regions while preserving semantic and geometric consistency.
+                </p>
+                <img src="./static/images/teaser.png"
+                     style="margin-left: auto; margin-right: auto; display: block;"
+                     width="90%"
+                     alt="Inpainting result.">
+            </div>
         </div>
-        <div class="column is-one-third has-text-centered">
-          <iframe loading="lazy" src="https://sketchfab.com/models/3910476e8b794a7184fa917f7a9c7cfe/embed?autospin=1&autostart=1&dnt=1"
-                  width="100%" height="300" frameborder="0" allowfullscreen></iframe>
-          <p class="subtitle is-6">Scene #2</p>
+
+        <!-- Scene Outpainting -->
+        <div class="columns is-centered">
+            <div class="column is-full-width">
+                <h3 class="title is-4">Scene Outpainting</h3>
+                <p>
+                    Our approach can expand incomplete scenes beyond their original boundaries while maintaining realistic structure and appearance.
+                </p>
+                <img src="./static/images/teaser.png"
+                     style="margin-left: auto; margin-right: auto; display: block;"
+                     width="90%"
+                     alt="Outpainting result.">
+            </div>
         </div>
-        <div class="column is-one-third has-text-centered">
-          <iframe loading="lazy" src="https://sketchfab.com/models/ee3c95417ec04b008ea2bc3bd5e15c1c/embed?autospin=1&autostart=1&dnt=1"
-                  width="100%" height="300" frameborder="0" allowfullscreen></iframe>
-          <p class="subtitle is-6">Scene #3</p>
+
+        <!-- Scene Editing -->
+        <div class="columns is-centered">
+            <div class="column is-full-width">
+                <h3 class="title is-4">Scene Editing</h3>
+                <p>
+                    We enable interactive editing of scenes via addition, removal, or modification of individual objects while maintaining overall scene coherence.
+                </p>
+                <img src="./static/images/teaser.png"
+                     style="margin-left: auto; margin-right: auto; display: block;"
+                     width="90%"
+                     alt="Editing result.">
+            </div>
         </div>
-      </div>
-    </div>
 
-    <!-- Medium Vegetation -->
-    <div id="group-medium" class="scene-group" style="display: none;">
-      <div class="columns is-multiline is-centered">
-        <div class="column is-one-third has-text-centered">
-          <iframe loading="lazy" src="https://sketchfab.com/models/28d0b5399878461d82d1791eac7becbd/embed?autospin=1&autostart=1&dnt=1"
-                  width="100%" height="300" frameborder="0" allowfullscreen></iframe>
-          <p class="subtitle is-6">Scene #1</p>
+        <!-- Street View Synthesis -->
+        <div class="columns is-centered">
+            <div class="column is-full-width">
+                <h3 class="title is-4">Street View Synthesis</h3>
+                <p>
+                    From generated 3D primitives, our pipeline can synthesize photo-realistic street views suitable for visualization or downstream tasks.
+                </p>
+                <img src="./static/images/teaser.png"
+                     style="margin-left: auto; margin-right: auto; display: block;"
+                     width="90%"
+                     alt="Street view synthesis result.">
+            </div>
         </div>
-        <div class="column is-one-third has-text-centered">
-          <iframe loading="lazy" src="https://sketchfab.com/models/de2005cf230a4113bb7b5faf85048303/embed?autospin=1&autostart=1&dnt=1"
-                  width="100%" height="300" frameborder="0" allowfullscreen></iframe>
-          <p class="subtitle is-6">Scene #2</p>
-        </div>
-        <div class="column is-one-third has-text-centered">
-          <iframe loading="lazy" src="https://sketchfab.com/models/af073186480b41dd8c1e2ba9134ae5e6/embed?autospin=1&autostart=1&dnt=1"
-                  width="100%" height="300" frameborder="0" allowfullscreen></iframe>
-          <p class="subtitle is-6">Scene #3</p>
-        </div>
-      </div>
-    </div>
 
-    <!-- High Vegetation -->
-    <div id="group-high" class="scene-group" style="display: none;">
-      <div class="columns is-multiline is-centered">
-        <div class="column is-one-third has-text-centered">
-          <iframe loading="lazy" src="https://sketchfab.com/models/b6cde11381b248f29e8f212ab6b8d05b/embed?autospin=1&autostart=1&dnt=1"
-                  width="100%" height="300" frameborder="0" allowfullscreen></iframe>
-          <p class="subtitle is-6">Scene #1</p>
-        </div>
-        <div class="column is-one-third has-text-centered">
-          <iframe loading="lazy" src="https://sketchfab.com/models/1209b315de9e46f2af03d03a87fdd147/embed?autospin=1&autostart=1&dnt=1"
-                  width="100%" height="300" frameborder="0" allowfullscreen></iframe>
-          <p class="subtitle is-6">Scene #2</p>
-        </div>
-        <div class="column is-one-third has-text-centered">
-          <iframe loading="lazy" src="https://sketchfab.com/models/28d0b5399878461d82d1791eac7becbd/embed?autospin=1&autostart=1&dnt=1"
-                  width="100%" height="300" frameborder="0" allowfullscreen></iframe>
-          <p class="subtitle is-6">Scene #3</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Slider -->
-    <div class="columns is-centered mt-5">
-      <div class="column is-8">
-        <div class="level is-mobile">
-          <div class="level-left">
-            <label for="veg-slider" class="level-item has-text-weight-semibold">Vegetation Density:</label>
-          </div>
-          <div class="level-right ml-4" style="flex-grow: 1;">
-            <input id="veg-slider" class="slider is-fullwidth is-info" type="range" min="0" max="2" step="1" value="0">
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    const label = document.getElementById("veg-label");
-    const slider = document.getElementById("veg-slider");
-    const levels = ["Low", "Medium", "High"];
-    const groups = ["group-low", "group-medium", "group-high"];
-
-    slider.addEventListener("input", () => {
-      const value = parseInt(slider.value);
-      label.innerHTML = `<strong>${levels[value]} Vegetation</strong>`;
-      groups.forEach((id, idx) => {
-        document.getElementById(id).style.display = value === idx ? "block" : "none";
-      });
-    });
-  </script>
-
-    <!-- Scene Inpainting -->
-    <h2 class="title is-3 mt-6">Scene Inpainting</h2>
-    <div class="content has-text-justified">
-      <p>
-        Our method enables inpainting of missing or occluded regions while preserving semantic and geometric consistency.
-      </p>
-    </div>
-
-    <div class="columns is-centered">
-      <div class="column is-half has-text-centered">
-        <img src="./static/images/teaser.png" style="width: 100%; height: auto;">
-        <p class="subtitle is-6 mt-2">Inpainting Result</p>
-      </div>
-    </div>
-
-
-    <!-- Scene Outpainting -->
-    <h2 class="title is-3 mt-6">Scene Outpainting</h2>
-    <div class="content has-text-justified">
-      <p>
-        Our approach can expand incomplete scenes beyond their original boundaries while maintaining realistic structure and appearance.
-      </p>
-    </div>
-    <div class="columns is-centered">
-      <div class="column is-half has-text-centered">
-        <img src="./static/images/teaser.png" style="width: 100%; height: auto;">
-        <p class="subtitle is-6 mt-2">Outpainting Result</p>
-      </div>
-    </div>
-
-    <!-- Scene Editing -->
-    <h2 class="title is-3 mt-6">Scene Editing</h2>
-    <div class="content has-text-justified">
-      <p>
-        We enable interactive editing of scenes via addition, removal, or modification of individual objects while maintaining overall scene coherence.
-      </p>
-    </div>
-    <div class="columns is-centered">
-      <div class="column is-half has-text-centered">
-        <img src="./static/images/teaser.png" style="width: 100%; height: auto;">
-        <p class="subtitle is-6 mt-2">Scene Editing Result</p>
-      </div>
-    </div>
-
-    <!-- Street View Synthesis -->
-    <h2 class="title is-3 mt-6">Street View Synthesis</h2>
-    <div class="content has-text-justified">
-      <p>
-        From generated 3D primitives, our pipeline can synthesize photo-realistic street views suitable for visualization or downstream tasks.
-      </p>
-    </div>
-    <div class="columns is-centered">
-      <div class="column is-half has-text-centered">
-        <img src="./static/images/teaser.png" style="width: 100%; height: auto;">
-        <p class="subtitle is-6 mt-2">Street View Synthesis Result</p>
-      </div>
-    </div>
-
+    </div> <!-- End container -->
 </section>
+
 
 
 <section class="section" id="BibTeX">
