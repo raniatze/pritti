@@ -675,50 +675,91 @@
       </div>
     </div>
 
-    <!-- Scene Outpainting -->
+    <!-- Scene Editing -->
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h3 class="title is-4">Scene Outpainting</h3>
-        <p style="margin-bottom: 1.5rem;">
-         Our approach can expand incomplete scenes beyond their original boundaries while maintaining realistic structure and appearance.
-        </p>
-        <div id="carousel-outpainting" class="splide" style="max-width: 800px; margin: auto;">
-          <div class="splide__track">
-            <ul class="splide__list">
-              <li class="splide__slide has-text-centered">
-                <img src="./static/images/outpainting_1.png" alt="Outpainting #1" style="max-width: 90%; height: auto;">
-              </li>
-              <li class="splide__slide has-text-centered">
-                <img src="./static/images/outpainting_2.png" alt="Outpainting #2" style="max-width: 90%; height: auto;">
-              </li>
-            </ul>
+        <h3 class="title is-4 has-text-centered mb-5">Scene Editing: Comparison Grid</h3>
+
+        <!-- Wrapper to center grid and control max width -->
+        <div style="max-width: 1000px; margin: auto;">
+          <div class="columns is-multiline is-centered is-variable is-1">
+
+            <!-- Item 1 -->
+            <div class="column is-one-third has-text-centered" style="padding: 0.5rem;">
+              <div style="position: relative; width: 300px; height: 300px; margin: auto; overflow: hidden;">
+                <img src="./static/images/original_1.png"
+                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; z-index: 1;">
+                <img id="fade-img-1" src="./static/images/rotation_1.png"
+                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; pointer-events: none; z-index: 2;">
+              </div>
+              <input id="fade-slider-1" type="range" min="0" max="1" step="0.01" value="0"
+                     style="width: 300px; margin-top: 1rem;">
+            </div>
+
+            <!-- Item 2 -->
+            <div class="column is-one-third has-text-centered" style="padding: 0.5rem;">
+              <div style="position: relative; width: 300px; height: 300px; margin: auto; overflow: hidden;">
+                <img src="./static/images/original_1.png"
+                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; z-index: 1;">
+                <img id="fade-img-2" src="./static/images/rotation_1.png"
+                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; pointer-events: none; z-index: 2;">
+              </div>
+              <input id="fade-slider-2" type="range" min="0" max="1" step="0.01" value="0"
+                     style="width: 300px; margin-top: 1rem;">
+            </div>
+
+            <!-- Item 3 -->
+            <div class="column is-one-third has-text-centered" style="padding: 0.5rem;">
+              <div style="position: relative; width: 300px; height: 300px; margin: auto; overflow: hidden;">
+                <img src="./static/images/original_1.png"
+                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; z-index: 1;">
+                <img id="fade-img-3" src="./static/images/rotation_1.png"
+                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; pointer-events: none; z-index: 2;">
+              </div>
+              <input id="fade-slider-3" type="range" min="0" max="1" step="0.01" value="0"
+                     style="width: 300px; margin-top: 1rem;">
+            </div>
+
+            <!-- Item 4 -->
+            <div class="column is-one-third has-text-centered" style="padding: 0.5rem;">
+              <div style="position: relative; width: 300px; height: 300px; margin: auto; overflow: hidden;">
+                <img src="./static/images/original_1.png"
+                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; z-index: 1;">
+                <img id="fade-img-4" src="./static/images/rotation_1.png"
+                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; pointer-events: none; z-index: 2;">
+              </div>
+              <input id="fade-slider-4" type="range" min="0" max="1" step="0.01" value="0"
+                     style="width: 300px; margin-top: 1rem;">
+            </div>
+
+            <!-- Item 5 -->
+            <div class="column is-one-third has-text-centered" style="padding: 0.5rem;">
+              <div style="position: relative; width: 300px; height: 300px; margin: auto; overflow: hidden;">
+                <img src="./static/images/original_1.png"
+                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; z-index: 1;">
+                <img id="fade-img-5" src="./static/images/rotation_1.png"
+                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; pointer-events: none; z-index: 2;">
+              </div>
+              <input id="fade-slider-5" type="range" min="0" max="1" step="0.01" value="0"
+                     style="width: 300px; margin-top: 1rem;">
+            </div>
+
+            <!-- Item 6 -->
+            <div class="column is-one-third has-text-centered" style="padding: 0.5rem;">
+              <div style="position: relative; width: 300px; height: 300px; margin: auto; overflow: hidden;">
+                <img src="./static/images/original_1.png"
+                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; z-index: 1;">
+                <img id="fade-img-6" src="./static/images/rotation_1.png"
+                     style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; pointer-events: none; z-index: 2;">
+              </div>
+              <input id="fade-slider-6" type="range" min="0" max="1" step="0.01" value="0"
+                     style="width: 300px; margin-top: 1rem;">
+            </div>
+
           </div>
         </div>
       </div>
     </div>
-
-    <!-- Scene Editing -->
-    <div class="columns is-centered">
-      <div class="column is-narrow has-text-centered">
-        <h3 class="title is-4">Scene Editing: Rotation</h3>
-
-        <div style="position: relative; width: 400px; height: 400px; margin: auto; overflow: hidden;">
-          <!-- Start image -->
-          <img src="./static/images/original_1.png"
-               style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; z-index: 1;">
-
-          <!-- End image (fade) -->
-          <img id="fade-img" src="./static/images/rotation_1.png"
-               style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; pointer-events: none; z-index: 2;">
-      </div>
-
-      <!-- Slider -->
-      <input id="fade-slider" type="range" min="0" max="1" step="0.01" value="0"
-             style="width: 400px; margin-top: 1rem;">
-
-      </div>
-    </div>
-
 
 
     <!-- Scene Editing -->
@@ -775,13 +816,14 @@
     }).mount();
   });
   document.addEventListener("DOMContentLoaded", function () {
-    const slider = document.getElementById("fade-slider");
-    const fadeImg = document.getElementById("fade-img");
-
+  for (let i = 1; i <= 6; i++) {
+    const slider = document.getElementById("fade-slider-" + i);
+    const fadeImg = document.getElementById("fade-img-" + i);
     slider.addEventListener("input", function () {
       fadeImg.style.opacity = slider.value;
     });
-  });
+  }
+});
 </script>
 
 <section class="section" id="BibTeX">
