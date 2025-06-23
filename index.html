@@ -289,7 +289,16 @@
     </div>
     <!--/ Abstract. -->
 
-    <div class="hero-body">
+    <!--  Overview -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Overview</h2>
+
+      </div>
+    </div>
+    <!--/ Overview -->
+
+    <div class="hero-body" style="padding-top: 1rem; padding-bottom: 1rem;">
       <img src="./static/images/method.png"/>
       <p><strong>Method Overview.</strong> An input 3D semantic layout comprises object primitives, encoded as feature vectors \( \mathbf{F} \), and extruded ground polygons, rasterized into height maps \( \mathbf{H} \) and binary occupancy masks \( \mathbf{B} \). A layout VAE with separate encoder-decoder pairs for objects (\( \mathcal{E}_\mathcal{O}\)/\(\mathcal{D}_\mathcal{O}\)) and ground (\(\mathcal{E}_\mathcal{G}\)/\(\mathcal{D}_\mathcal{G}\)) is first trained to compress the input into a latent representation \( \mathbf{z}_\mathcal{L} \), structured to facilitate disentanglement between the two modalities. In the second stage, we train a latent diffusion model for controllable generation of novel 3D semantic scene layouts.</p>
 
@@ -658,16 +667,19 @@
           <div class="splide__track">
             <ul class="splide__list">
               <li class="splide__slide has-text-centered">
-                <img src="./static/images/inpainting_upper.png" alt="Upper inpainting" style="max-width: 90%; height: auto;">
+                <img src="./static/images/inpainting_upper.png" alt="Upper inpainting" style="max-width: 100%; height: auto;">
               </li>
               <li class="splide__slide has-text-centered">
-                <img src="./static/images/inpainting_lower.png" alt="Lower inpainting" style="max-width: 90%; height: auto;">
+                <img src="./static/images/inpainting_lower.png" alt="Lower inpainting" style="max-width: 100%; height: auto;">
               </li>
               <li class="splide__slide has-text-centered">
-                <img src="./static/images/inpainting_left.png" alt="Left inpainting" style="max-width: 90%; height: auto;">
+                <img src="./static/images/inpainting_left.png" alt="Left inpainting" style="max-width: 100%; height: auto;">
               </li>
               <li class="splide__slide has-text-centered">
-                <img src="./static/images/inpainting_right.png" alt="Right inpainting" style="max-width: 90%; height: auto;">
+                <img src="./static/images/inpainting_right.png" alt="Right inpainting" style="max-width: 100%; height: auto;">
+              </li>
+              <li class="splide__slide has-text-centered">
+                <img src="./static/images/inpainting_ground_to_objects.png" alt="Right inpainting" style="max-width: 100%; height: auto;">
               </li>
             </ul>
           </div>
@@ -686,10 +698,10 @@
           <div class="splide__track">
             <ul class="splide__list">
               <li class="splide__slide has-text-centered">
-                <img src="./static/images/outpainting_1.png" alt="Outpainting #1" style="max-width: 90%; height: auto;">
+                <img src="./static/images/outpainting_1.png" alt="Outpainting #1" style="max-width: 100%; height: auto;">
               </li>
               <li class="splide__slide has-text-centered">
-                <img src="./static/images/outpainting_2.png" alt="Outpainting #2" style="max-width: 90%; height: auto;">
+                <img src="./static/images/outpainting_2.png" alt="Outpainting #2" style="max-width: 100%; height: auto;">
               </li>
             </ul>
           </div>
