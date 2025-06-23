@@ -630,13 +630,12 @@
 
     <h2 class="title is-3 has-text-centered">Applications</h2>
 
-      <!-- Conditional Scene Synthesis -->
+      <!-- Controllable Scene Synthesis -->
       <div class="columns is-centered">
         <div class="column is-full-width">
-          <h3 class="title is-4">Conditional Scene Synthesis</h3>
+          <h3 class="title is-4">Controllable Scene Synthesis</h3>
           <p style="margin-bottom: 1.5rem;">
-            We generate controllable 3D semantic urban scenes under varying vegetation density conditions.
-            Users can adjust the density via the slider to explore variations in the synthesized scenes.
+            We generate controllable 3D semantic urban scenes under varying vegetation density conditions. The synthesized layouts exhibit realistic and diverse spatial compositions with clearly structured and well-shaped primitive geometries.
           </p>
           <div id="carousel-generation" class="splide" style="max-width: 800px; margin: auto;">
             <div class="splide__track">
@@ -661,7 +660,7 @@
       <div class="column is-full-width">
         <h3 class="title is-4">Scene Inpainting</h3>
         <p style="margin-bottom: 1.5rem;">
-          Our method enables inpainting of missing or occluded regions while preserving semantic and geometric consistency. By properly setting a binary latent mask we can edit an original scene in diverse ways.
+          Our method enables scene inpainting through a latent manipulation mechanism, where a binary mask controls which spatial regions are modified. By appropriately configuring this mask, we can edit scenes in diverse ways (e.g., targeting only upper, lower, or lateral regions) while keeping the unmasked content unchanged. The generated regions blend seamlessly with the existing geometry and semantics.
         </p>
         <div id="carousel-inpainting" class="splide" style="max-width: 800px; margin: auto;">
           <div class="splide__track">
@@ -692,7 +691,9 @@
       <div class="column is-full-width">
         <h3 class="title is-4">Scene Outpainting</h3>
         <p style="margin-bottom: 1.5rem;">
-         Our approach can expand incomplete scenes beyond their original boundaries while maintaining realistic structure and appearance.
+         We perform scene outpainting by leveraging the same latent manipulation mechanism used for inpainting, enabling controlled expansion of scenes beyond their original spatial extent. The generated scenes maintain semantic coherence, with realistic and diverse road structures as well as plausible object placements.
+
+
         </p>
         <div id="carousel-outpainting" class="splide" style="max-width: 800px; margin: auto;">
           <div class="splide__track">
@@ -716,7 +717,7 @@
 
           <h3 class="title is-4">Scene Editing</h3>
           <p style="margin-bottom: 1.5rem;">
-            We enable interactive editing of scenes via addition, removal, or modification of individual objects while maintaining overall scene coherence.
+            Our instance-level primitive-based representation enables intuitive editing of individual objects through direct manipulation of their parameters. Unlike voxel-based methods, editing operations such as rotation, translation, and scaling can be intuitively performed without requiring additional post-processing.
           </p>
 
           <div id="carousel-editing" class="splide">
@@ -890,7 +891,7 @@
       <div class="column is-full-width">
         <h3 class="title is-4">Street View Synthesis</h3>
         <p style="margin-bottom: 1.5rem;">
-          From generated 3D primitives, our pipeline can synthesize photo-realistic street views suitable for visualization or downstream tasks.
+          Generated scenes are rendered into semantic maps used to condition photo-realistic street view synthesis, producing street-view images that are both realistic and semantically accurate.
         </p>
         <img src="./static/images/photorealism.png" style="margin-left: auto; margin-right: auto; display: block;" width="90%" alt="Street view synthesis result.">
       </div>
@@ -942,10 +943,10 @@
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@article{PrITTI2025ARXIV,
-  author    = {Tze, Christina O. and Dauner, Daniel and Liao, Yiyi and Tsishkou, Dzmitry, and Geiger, Andreas},
+    <pre><code>@article{Tze2025PrITTI,
+  author    = {Tze, Christina Ourania and Dauner, Daniel and Liao, Yiyi and Tsishkou, Dzmitry and Geiger, Andreas},
   title     = {PrITTI: Primitive-based Generation of Controllable and Editable 3D Semantic Scenes},
-  journal   = {arxiv},
+  journal   = {arXiv preprint arXiv:},
   year      = {2025},
 }</code></pre>
   </div>
