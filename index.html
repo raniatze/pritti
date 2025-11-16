@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta name="description" content="PrITTI: Primitive-based Generation of Controllable and Editable 3D Semantic Scenes">
+  <meta name="description" content="PrITTI: Primitive-based Generation of Controllable and Editable 3D Semantic Urban Scenes">
   <meta name="keywords" content="3D Scene Generation, Latent Diffusion, Primitives">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>pritti</title>
@@ -59,6 +59,146 @@
       margin-top: 0.5rem;
     }
   </style>
+
+  <!-- 2×2 video grid styles -->
+  <style>
+    .video-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:24px
+    }
+
+    .video-grid figure {
+      margin: 0 !important;
+      padding: 0 !important;
+      aspect-ratio: 1 / 1;   /* square cells for your square videos */
+    }
+
+    .video-grid .vid {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;         /* <<< IMPORTANT: was 'contain' */
+      background-color: #ffffff; /* match the page background */
+    }
+
+    /* overlay stuff */
+    .video-grid figure.video-wrapper {
+      position: relative;
+    }
+
+    .video-wrapper .vid-overlay-btn {
+      position: absolute;
+      inset: 0;                 /* cover entire video */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      background: transparent !important;  /* override Bulma button styles */
+      box-shadow: none !important;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    /* Big white play triangle drawn with borders */
+    .video-wrapper .vid-overlay-btn::before {
+      content: "";
+      width: 0;
+      height: 0;
+      border-left: 35px solid rgba(255, 255, 255, 0.95);
+      border-top: 20px solid transparent;
+      border-bottom: 20px solid transparent;
+      /* slight shadow so it pops */
+      filter: drop-shadow(0 0 8px rgba(0,0,0,0.8));
+    }
+
+    /* Hide the whole overlay while the video is playing */
+    .video-wrapper.is-playing .vid-overlay-btn {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.15s ease;
+    }
+
+    .vid-overlay-btn:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 2px;
+    }
+
+    /* Make the video cells totally borderless & flat */
+    #carousel-progressive .video-wrapper {
+      overflow: hidden;        /* hide anything that sticks out */
+    }
+
+    #carousel-progressive .vid {
+      transform: scale(1.02);  /* zoom in 2% – adjust to 1.01 if you want */
+      transform-origin: center;
+    }
+
+    #carousel-progressive .video-grid,
+    #carousel-progressive .video-grid figure,
+    #carousel-progressive .video-grid video {
+      border: none !important;
+      box-shadow: none !important;
+      background: #fff !important;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Make <video> behave like a block so there is no baseline gap */
+    #carousel-progressive .video-grid video {
+      display: block !important;
+    }
+
+    /* Just to be extra sure Splide doesn't draw anything */
+    #carousel-progressive .splide__slide,
+    #carousel-progressive .splide__track,
+    #carousel-progressive .splide__list {
+      border: none !important;
+      box-shadow: none !important;
+    }
+    /* Kill the weird 0.5px video border (Chrome etc.) */
+    #carousel-progressive .video-grid video {
+      display: block;              /* remove baseline gap */
+    }
+
+    /* Also remove focus outline that can look like a border */
+    #carousel-progressive .video-grid video:focus {
+      outline: none;
+    }
+
+    /* Kill decorative underlines that the template adds to <figure> */
+    #carousel-progressive .video-grid figure::before,
+    #carousel-progressive .video-grid figure::after {
+      content: none !important;
+      display: none !important;
+    }
+
+    /* HARD RESET for stray lines inside the progressive carousel
+    (won't touch the play button triangle) */
+    #carousel-progressive,
+    #carousel-progressive .splide__track,
+    #carousel-progressive .splide__list,
+    #carousel-progressive .splide__slide,
+    #carousel-progressive .video-grid,
+    #carousel-progressive .video-grid figure {
+      border: none !important;
+      box-shadow: none !important;
+      background-color: #ffffff !important;
+    }
+
+    /* Kill any decorative pseudo-elements that draw separator lines */
+    #carousel-progressive .splide__track::before,
+    #carousel-progressive .splide__track::after,
+    #carousel-progressive .splide__slide::before,
+    #carousel-progressive .splide__slide::after,
+    #carousel-progressive .video-grid::before,
+    #carousel-progressive .video-grid::after,
+    #carousel-progressive .video-grid figure::before,
+    #carousel-progressive .video-grid figure::after {
+      content: none !important;
+    }
+
+  </style>
 </head>
 <body>
 
@@ -78,7 +218,7 @@
     <div class="container">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">PrITTI: Primitive-based Generation of <br> Controllable and Editable 3D Semantic Scenes</h1>
+          <h1 class="title is-1 publication-title">PrITTI: Primitive-based Generation of <br> Controllable and Editable 3D Semantic Urban Scenes</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://raniatze.github.io/">Christina Ourania Tze</a><sup>1</sup>,</span>
@@ -167,7 +307,8 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
       <img src="./static/images/teaser.png"/>
-      <p><strong>PrITTI</strong> generates (1) high-quality, controllable 3D semantic urban scenes in a compact primitive-based representation using a latent diffusion model. Our approach enables applications such as (2) scene editing, (3) inpainting, (4) outpainting, and (5) photo-realistic street view synthesis.</p>
+      <p><strong>PrITTI</strong> generates (1) high-quality, controllable 3D semantic urban scenes in a compact primitive-based representation using a latent diffusion model. Starting from a generated scene (e.g. middle sample), we demonstrate downstream applications including (2) scene editing, (3) inpainting,
+    (4) outpainting, and (5) photo-realistic street view synthesis.</p>
 
     </div>
   </div>
@@ -282,7 +423,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Large-scale 3D semantic scene generation has predominantly relied on voxel-based representations, which are memory-intensive, bound by fixed resolutions, and challenging to edit. In 	  contrast, primitives represent semantic entities using compact, coarse 3D structures that are easy to manipulate and compose, making them an ideal representation for this task. In this paper, we introduce PrITTI, a latent diffusion-based framework that leverages primitives as the main foundational elements for generating compositional, controllable, and editable 3D semantic scene layouts. Our method adopts a hybrid representation, modeling ground surfaces in a rasterized format while encoding objects as vectorized 3D primitives. This decomposition is also reflected in a structured latent representation that enables flexible scene manipulation of ground and object components. To overcome the orientation ambiguities in conventional encoding methods, we introduce a stable Cholesky-based parameterization that jointly encodes object size and orientation. Experiments on the KITTI-360 dataset show that PrITTI outperforms a voxel-based baseline in generation quality, while reducing memory requirements by up to 3&times;. In addition, PrITTI enables direct instance-level manipulation of objects in the scene and supports a range of downstream applications, including scene inpainting, outpainting, and photo-realistic street-view synthesis.
+            Existing approaches to 3D semantic urban scene generation predominantly rely on voxel-based representations, which are bound by fixed resolution, challenging to edit, and memory-intensive in their dense form. In contrast, we advocate for a primitive-based paradigm where urban scenes are represented using compact, semantically meaningful 3D elements that are easy to manipulate and compose. To this end, we introduce PrITTI, a latent diffusion model that leverages vectorized object primitives and rasterized ground surfaces for generating diverse, controllable, and editable 3D semantic urban scenes. This hybrid representation yields a structured latent space that facilitates object- and ground-level manipulation. Experiments on KITTI-360 show that primitive-based representations unlock the full capabilities of diffusion transformers, achieving state-of-the-art 3D scene generation quality with lower memory requirements, faster inference, and greater editability than voxel-based methods. Beyond generation, PrITTI supports a range of downstream applications, including scene editing, inpainting, outpainting, and photo-realistic street-view synthesis.
           </p>
         </div>
       </div>
@@ -300,7 +441,7 @@
 
     <div class="hero-body" style="padding-top: 1rem; padding-bottom: 1rem;">
       <img src="./static/images/method.png"/>
-      <p><strong>Method Overview.</strong> An input 3D semantic layout comprises object primitives, encoded as feature vectors \( \mathbf{F} \), and extruded ground polygons, rasterized into height maps \( \mathbf{H} \) and binary occupancy masks \( \mathbf{B} \). A layout VAE with separate encoder-decoder pairs for objects (\( \mathcal{E}_\mathcal{O}\)/\(\mathcal{D}_\mathcal{O}\)) and ground (\(\mathcal{E}_\mathcal{G}\)/\(\mathcal{D}_\mathcal{G}\)) is first trained to compress the input into a latent representation \( \mathbf{z}_\mathcal{L} \), structured to facilitate disentanglement between the two modalities. In the second stage, we train a latent diffusion model for controllable generation of novel 3D semantic scene layouts.</p>
+      <p><strong>Method Training Overview.</strong> An input 3D semantic layout \( \mathcal{S} \) comprises object primitives, encoded as feature vectors \( \mathbf{F} \), and extruded ground polygons, rasterized into height maps \( \mathbf{H} \) and binary occupancy masks \( \mathbf{B} \). A layout VAE with separate encoder-decoder pairs for objects (\( \mathcal{E}_\mathcal{O}\)/\(\mathcal{D}_\mathcal{O}\)) and ground (\(\mathcal{E}_\mathcal{G}\)/\(\mathcal{D}_\mathcal{G}\)) first compresses \( \mathcal{S} \) into a structured latent representation \( \mathbf{z}_\mathcal{L} \). In the second stage, a diffusion model is trained over this latent space for controllable scene generation. At inference, the diffusion model generates latent codes either unconditionally or conditioned on the scene label \( y\), which are then decoded by the VAE into novel 3D layouts.</p>
 
     </div>
 
@@ -660,25 +801,22 @@
       <div class="column is-full-width">
         <h3 class="title is-4">Scene Inpainting</h3>
         <p style="margin-bottom: 1.5rem;">
-          Our method enables scene inpainting through a latent manipulation mechanism, where a binary mask controls which spatial regions are modified. By appropriately configuring this mask, we can edit scenes in diverse ways (e.g., targeting only upper, lower, or lateral regions) while keeping the unmasked content unchanged. The generated regions blend seamlessly with the existing geometry and semantics.
+          Our method enables scene inpainting through a latent manipulation mechanism, where a binary mask controls which spatial regions are modified. By appropriately configuring this mask, we can edit scenes in diverse ways (e.g., targeting only top, bottom, or lateral regions) while keeping the unmasked content unchanged. The generated regions blend seamlessly with the existing geometry and semantics.
         </p>
         <div id="carousel-inpainting" class="splide" style="max-width: 800px; margin: auto;">
           <div class="splide__track">
             <ul class="splide__list">
               <li class="splide__slide has-text-centered">
-                <img src="./static/images/inpainting_upper.png" alt="Upper inpainting" style="max-width: 100%; height: auto;">
+                <img src="./static/images/inpainting_top.png" alt="Top inpainting" style="max-width: 100%; height: auto;">
               </li>
               <li class="splide__slide has-text-centered">
-                <img src="./static/images/inpainting_lower.png" alt="Lower inpainting" style="max-width: 100%; height: auto;">
+                <img src="./static/images/inpainting_bottom.png" alt="Bottom inpainting" style="max-width: 100%; height: auto;">
               </li>
               <li class="splide__slide has-text-centered">
                 <img src="./static/images/inpainting_left.png" alt="Left inpainting" style="max-width: 100%; height: auto;">
               </li>
               <li class="splide__slide has-text-centered">
                 <img src="./static/images/inpainting_right.png" alt="Right inpainting" style="max-width: 100%; height: auto;">
-              </li>
-              <li class="splide__slide has-text-centered">
-                <img src="./static/images/inpainting_ground_to_objects.png" alt="Right inpainting" style="max-width: 100%; height: auto;">
               </li>
             </ul>
           </div>
@@ -704,11 +842,127 @@
               <li class="splide__slide has-text-centered">
                 <img src="./static/images/outpainting_2.png" alt="Outpainting #2" style="max-width: 100%; height: auto;">
               </li>
+              <li class="splide__slide has-text-centered">
+                <img src="./static/images/outpainting_3.png" alt="Outpainting #3" style="max-width: 100%; height: auto;">
+              </li>
+              <li class="splide__slide has-text-centered">
+                <img src="./static/images/outpainting_4.png" alt="Outpainting #4" style="max-width: 100%; height: auto;">
+              </li>
             </ul>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- Progressive Outpainting -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h3 class="title is-4">Large-scale Scene Extrapolation</h3>
+        <p style="margin-bottom: 1.5rem;">
+          We extend scenes iteratively, growing the layout block by block. Each slide shows a 2×2 montage of clips illustrating coherent long-range expansion.
+        </p>
+
+        <div id="carousel-progressive" class="splide" style="max-width: 800px; margin:auto;">
+          <div class="splide__track">
+            <ul class="splide__list">
+
+              <!-- Slide 1 -->
+              <li class="splide__slide">
+                <div class="video-grid">
+                  <figure class="video-wrapper">
+                    <video class="vid" muted playsinline preload="auto">
+                      <source src="./static/videos/progressive_0.mp4" type="video/mp4">
+                    </video>
+                    <button class="vid-overlay-btn" aria-label="Play/Pause"></button>
+                  </figure>
+                  <figure class="video-wrapper">
+                    <video class="vid" muted playsinline preload="auto">
+                      <source src="./static/videos/progressive_1.mp4" type="video/mp4">
+                    </video>
+                    <button class="vid-overlay-btn" aria-label="Play/Pause"></button>
+                  </figure>
+                  <figure class="video-wrapper">
+                    <video class="vid" muted playsinline preload="auto">
+                      <source src="./static/videos/progressive_2.mp4" type="video/mp4">
+                    </video>
+                    <button class="vid-overlay-btn" aria-label="Play/Pause"></button>
+                  </figure>
+                  <figure class="video-wrapper">
+                    <video class="vid" muted playsinline preload="auto">
+                      <source src="./static/videos/progressive_3.mp4" type="video/mp4">
+                    </video>
+                    <button class="vid-overlay-btn" aria-label="Play/Pause"></button>
+                  </figure>
+                </div>
+              </li>
+
+              <!-- Slide 2 -->
+              <li class="splide__slide">
+                <div class="video-grid">
+                  <figure class="video-wrapper">
+                    <video class="vid" muted playsinline preload="auto">
+                      <source src="./static/videos/progressive_4.mp4" type="video/mp4">
+                    </video>
+                    <button class="vid-overlay-btn" aria-label="Play/Pause"></button>
+                  </figure>
+                  <figure class="video-wrapper">
+                    <video class="vid" muted playsinline preload="auto">
+                      <source src="./static/videos/progressive_5.mp4" type="video/mp4">
+                    </video>
+                    <button class="vid-overlay-btn" aria-label="Play/Pause"></button>
+                  </figure>
+                  <figure class="video-wrapper">
+                    <video class="vid" muted playsinline preload="auto">
+                      <source src="./static/videos/progressive_6.mp4" type="video/mp4">
+                    </video>
+                    <button class="vid-overlay-btn" aria-label="Play/Pause"></button>
+                  </figure>
+                  <figure class="video-wrapper">
+                    <video class="vid" muted playsinline preload="auto">
+                      <source src="./static/videos/progressive_7.mp4" type="video/mp4">
+                    </video>
+                    <button class="vid-overlay-btn" aria-label="Play/Pause"></button>
+                  </figure>
+                </div>
+              </li>
+
+              <!-- Slide 3 -->
+              <li class="splide__slide">
+                <div class="video-grid">
+                  <figure class="video-wrapper">
+                    <video class="vid" muted playsinline preload="auto">
+                      <source src="./static/videos/progressive_8.mp4" type="video/mp4">
+                    </video>
+                    <button class="vid-overlay-btn" aria-label="Play/Pause"></button>
+                  </figure>
+                  <figure class="video-wrapper">
+                    <video class="vid" muted playsinline preload="auto">
+                      <source src="./static/videos/progressive_9.mp4" type="video/mp4">
+                    </video>
+                    <button class="vid-overlay-btn" aria-label="Play/Pause"></button>
+                  </figure>
+                  <figure class="video-wrapper">
+                    <video class="vid" muted playsinline preload="auto">
+                      <source src="./static/videos/progressive_10.mp4" type="video/mp4">
+                    </video>
+                    <button class="vid-overlay-btn" aria-label="Play/Pause"></button>
+                  </figure>
+                  <figure class="video-wrapper">
+                    <video class="vid" muted playsinline preload="auto">
+                      <source src="./static/videos/progressive_11.mp4" type="video/mp4">
+                    </video>
+                    <button class="vid-overlay-btn" aria-label="Play/Pause"></button>
+                  </figure>
+                </div>
+              </li>
+
+              <!-- more slides … -->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
 
     <!-- Scene Editing -->
     <div class="columns is-centered">
@@ -887,15 +1141,31 @@
     </div>
 
     <!-- Street View Synthesis -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h3 class="title is-4">Street View Synthesis</h3>
-        <p style="margin-bottom: 1.5rem;">
-          Generated scenes are rendered into semantic maps used to condition photo-realistic street view synthesis, producing street-view images that are both realistic and semantically accurate.
-        </p>
-        <img src="./static/images/photorealism.png" style="margin-left: auto; margin-right: auto; display: block;" width="90%" alt="Street view synthesis result.">
+    <h3 class="title is-4">Street View Synthesis</h3>
+    <p style="margin-bottom: 1.5rem;">
+      Generated scenes are rendered into semantic maps used to condition photo-realistic street view synthesis, producing street-view images that are both realistic and semantically accurate.
+    </p>
+
+    <div id="carousel-streetview" class="splide" style="max-width: 900px; margin: auto;">
+      <div class="splide__track">
+        <ul class="splide__list">
+          <!-- Slide 1 -->
+          <li class="splide__slide has-text-centered">
+            <img src="./static/images/photorealism_1.png"
+                 alt="Street view example 1"
+                 style="max-width: 100%; height: auto;">
+          </li>
+
+          <!-- Slide 2 -->
+          <li class="splide__slide has-text-centered">
+            <img src="./static/images/photorealism_2.png"
+                 alt="Street view example 2"
+                 style="max-width: 100%; height: auto;">
+          </li>
+        </ul>
       </div>
     </div>
+
 
   </div>
 </section>
@@ -928,16 +1198,103 @@
       pagination: true,
     }).mount();
   });
-    document.addEventListener('DOMContentLoaded', function () {
-    const editingSplide = new Splide('#carousel-editing', {
-    type: 'loop',
-    perPage: 1,
-    arrows: true,
-    pagination: true,
+  document.addEventListener('DOMContentLoaded', function () {
+    new Splide('#carousel-streetview', {
+      type: 'loop',
+      perPage: 1,
+      autoplay: false,
+      arrows: true,
+      pagination: true,
+    }).mount();
   });
+  document.addEventListener('DOMContentLoaded', function () {
+    const editingSplide = new Splide('#carousel-editing', {
+      type: 'loop',
+      perPage: 1,
+      arrows: true,
+      pagination: true,
+    });
 
     editingSplide.mount();
   });
+document.addEventListener('DOMContentLoaded', () => {
+  const root = '#carousel-progressive';
+
+  // Make sure progressive videos never show native controls
+  document.querySelectorAll(`${root} video`).forEach(v => {
+    v.controls = false;
+    v.removeAttribute('controls');
+  });
+
+  const splide = new Splide(root, {
+    type: 'slide',
+    rewind: true,
+    perPage: 1,
+    arrows: true,
+    pagination: true,
+    autoplay: false,
+    gap: '0rem',
+  });
+
+  function resetWrapper(wrapper, video) {
+    if (!video || !wrapper) return;
+    video.pause();
+    video.currentTime = 0;
+    wrapper.classList.remove('is-playing');
+  }
+
+  function initVideoControls() {
+    const wrappers = document.querySelectorAll(`${root} .video-wrapper`);
+
+    wrappers.forEach(wrapper => {
+      const video = wrapper.querySelector('video');
+      const btn   = wrapper.querySelector('.vid-overlay-btn');
+
+      // initial state
+      resetWrapper(wrapper, video);
+
+      btn.addEventListener('click', () => {
+        if (video.paused) {
+          video.play().then(() => {
+            wrapper.classList.add('is-playing');   // overlay fades out
+          }).catch(() => {});
+        } else {
+          resetWrapper(wrapper, video);
+        }
+      });
+
+      video.addEventListener('ended', () => {
+        resetWrapper(wrapper, video);
+      });
+    });
+  }
+
+  function pauseAllVideos() {
+    const wrappers = document.querySelectorAll(`${root} .video-wrapper`);
+    wrappers.forEach(wrapper => {
+      const video = wrapper.querySelector('video');
+      resetWrapper(wrapper, video);
+    });
+  }
+
+  splide.on('mounted', () => {
+    initVideoControls();
+    pauseAllVideos();
+  });
+
+  splide.on('move', () => {
+    pauseAllVideos();
+  });
+
+  splide.mount();
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      pauseAllVideos();
+    }
+  });
+});
+
 </script>
 
 <section class="section" id="BibTeX">
@@ -945,7 +1302,7 @@
     <h2 class="title">BibTeX</h2>
     <pre><code>@article{Tze2025PrITTI,
   author    = {Tze, Christina Ourania and Dauner, Daniel and Liao, Yiyi and Tsishkou, Dzmitry and Geiger, Andreas},
-  title     = {PrITTI: Primitive-based Generation of Controllable and Editable 3D Semantic Scenes},
+  title     = {PrITTI: Primitive-based Generation of Controllable and Editable 3D Semantic Urban Scenes},
   journal   = {arXiv preprint arXiv:2506.19117},
   year      = {2025},
 }</code></pre>
@@ -967,7 +1324,8 @@
       <div class="column is-8">
         <div class="content">
           <p>
-            This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+            This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
           </p>
           <p>
             The website source code borrowed from <a href="https://github.com/nerfies/nerfies.github.io">here</a>.
