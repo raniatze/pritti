@@ -306,7 +306,7 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <img src="./static/images/teaser.png"/>
+      <img src="./static/images/teaser_200dpi.png"/>
       <p><strong>PrITTI</strong> generates (1) high-quality, controllable 3D semantic urban scenes in a compact primitive-based representation using a latent diffusion model. Starting from a generated scene (e.g. middle sample), we demonstrate downstream applications including (2) scene editing, (3) inpainting,
     (4) outpainting, and (5) photo-realistic street view synthesis.</p>
 
@@ -440,7 +440,7 @@
     <!--/ Overview -->
 
     <div class="hero-body" style="padding-top: 1rem; padding-bottom: 1rem;">
-      <img src="./static/images/method.png"/>
+      <img src="./static/images/method_200dpi.png"/>
       <p><strong>Method Training Overview.</strong> An input 3D semantic layout \( \mathcal{S} \) comprises object primitives, encoded as feature vectors \( \mathbf{F} \), and extruded ground polygons, rasterized into height maps \( \mathbf{H} \) and binary occupancy masks \( \mathbf{B} \). A layout VAE with separate encoder-decoder pairs for objects (\( \mathcal{E}_\mathcal{O}\)/\(\mathcal{D}_\mathcal{O}\)) and ground (\(\mathcal{E}_\mathcal{G}\)/\(\mathcal{D}_\mathcal{G}\)) first compresses \( \mathcal{S} \) into a structured latent representation \( \mathbf{z}_\mathcal{L} \). In the second stage, a diffusion model is trained over this latent space for controllable scene generation. At inference, the diffusion model generates latent codes either unconditionally or conditioned on the scene label \( y\), which are then decoded by the VAE into novel 3D layouts.</p>
 
     </div>
